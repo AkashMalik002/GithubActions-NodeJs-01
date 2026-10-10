@@ -1,0 +1,24 @@
+name: Build NodeJS application
+on: push
+jobs:
+ job-build:
+   runs-on: ubuntu-latest
+   steps:
+     - name: checkout the code on runner VM.
+       uses: actions/checkout@v7
+     - name: Install nodejs
+       uses: actions/setup-node@v7
+       with:
+         node-version: '18'
+     - name: Install nodejs dependencies
+       run: npm ci
+     - name: Execute test cases
+       run: npm test
+     - name: Build the application
+       run: npm run build
+     - name: Upload the build from runnner to the github repo
+       uses: actions/upload-artifact@v7
+       with:
+         name: buildfile
+         path: dist
+         
