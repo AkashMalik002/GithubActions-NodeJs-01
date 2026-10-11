@@ -9,6 +9,9 @@ jobs:
      matrix:
       node-version: [12,16,18]
       operating-system: [ubuntu-latest, windows-latest]
+      # Include and Exclude
+      # exclude means do not include this match
+      # include means add these even if the OS and node-version is not mentioned above.
       exclude:
       - node-version: 12
         operating-system: ubuntu-latest
